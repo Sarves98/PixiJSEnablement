@@ -282,6 +282,9 @@ const generatePlayerScore = () => {
 }
 
 const generateAndDisplayMaxScore = () => {
+    let maxScore = localStorage.getItem("highScore");
+    if(!maxScore)
+        return;
     let hiSprite = new PIXI.Sprite(objectsList.hi);
     hiSprite.anchor.set(0.5);
     hiSprite.x = 500;
@@ -289,7 +292,6 @@ const generateAndDisplayMaxScore = () => {
     hiSprite.scale.x = 0.7;
     hiSprite.scale.y= 0.7;
     app.stage.addChild(hiSprite);
-    let maxScore = localStorage.getItem("highScore");
     let maxScoreContainer = new PIXI.Container();
     if(!maxScore)
         return;
