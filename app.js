@@ -12,6 +12,7 @@ let moon, moonIndex = 0;
 let starSprite, cloudSprite;
 let degrees;
 let maxJumpHeight = 10;
+let isFirstJump = true;
 
 
 window.onload = () => {
@@ -32,7 +33,6 @@ const loadComplete = (event) => {
     displayResetIcon();
     displayHorizon();
     displayIdleTRex();
-    throwObstaclesAtPlayer();
     generateAndDisplayMaxScore();
 }
 
@@ -78,9 +78,10 @@ const displayResetIcon = () => {
     resetSprite.on('pointerdown', (event) => {
         app.stage.removeChild(dino);
         displayTRex();
-        startGame();
         isFirstInstance = false;
         app.stage.removeChild(resetSprite);
+        throwObstaclesAtPlayer();
+        startGame();
     })
 }
 
@@ -352,6 +353,8 @@ const throwObstaclesAtPlayer = () => {
         let index = getRandomInt(8);
         let obstacle;
         if(index >= 6){
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+                return;
             obstacle = new PIXI.AnimatedSprite(objectsList.Pterodactyl);
             obstacle.loop = true;
             obstacle.animationSpeed = 0.1;
@@ -402,7 +405,14 @@ window.addEventListener('keyup',e => {
         displayTRex();
     }
 });
-window.addEventListener('click', performJumpAction());
+
+window.addEventListener('touchstart', () => {
+    if(isFirstJump){
+        isFirstJump = false;
+        return;
+    }
+    performJumpAction();
+});
 
 window.addEventListener("visibilitychange", () => {
     if(obstacleTimer){
