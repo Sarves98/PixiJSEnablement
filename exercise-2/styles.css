@@ -1,0 +1,43 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(2,2,19);
+    color: rgb(154, 160, 166);
+}
+
+#canvas-container{
+    width: 800px;
+}
+
+.text-content{
+    width: 600px;
+    font-family: system-ui, sans-serif;
+}
+
+.text-content h1{
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.text-content h1 span{
+    font-size: 10px;
+}
+
+.text-content p, .text-content ul{
+    font-size: 15px;
+}
+.text-content ul{
+    padding-left: 40px;
+}
+
+.internet-disconnected{
+    font-size: 12px;
+}
+
+p{
+    margin-top: 1em;
+}

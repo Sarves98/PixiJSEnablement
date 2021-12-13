@@ -1,0 +1,16 @@
+{
+  "name": "pixi-trial",
+  "version": "1.0.0",
+  "description": "My Experiments with Pixi js",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.24.0",
+    "http-server": "^14.0.0",
+    "pixi.js": "^6.2.0"
+  }
+}
